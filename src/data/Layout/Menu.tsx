@@ -1,0 +1,828 @@
+import { MenuItem } from "@/Types/LayoutTypes";
+
+export const MenuList: MenuItem[] | undefined = [
+  {
+    title: "General",
+    lanClass: "lan-1",
+    menucontent: "Dashboard & General Layouts",
+    Items: [
+      {
+        path: "/dashboard",
+        icon: "home",
+        title: "Dashboard",
+        type: "link",
+        id: 1,
+      },
+    ],
+  },
+  {
+    title: "Pages",
+    menucontent: "All neccesory pages",
+    Items: [
+      {
+        path: "/",
+        icon: "sample-page",
+        title: "Home page",
+        type: "link",
+        id: 1,
+      },
+      {
+        path: "/",
+        icon: "sample-page",
+        title: "About page",
+        type: "link",
+        id: 1,
+      },
+      {
+        title: "Services",
+        icon: "sample-page",
+        id: 2,
+        type: "sub",
+        active: false,
+        children: [
+          { path: "/services/add_service", title: "Add Service", type: "link" },
+          {
+            path: "/services/service_list",
+            title: "Service List",
+            type: "link",
+          },
+        ],
+      },
+      {
+        title: "Case Study",
+        icon: "sample-page",
+        id: 2,
+        type: "sub",
+        active: false,
+        children: [
+          {
+            path: "/casestudy/add_casestudy",
+            title: "Add Case Study",
+            type: "link",
+          },
+          {
+            path: "/casestudy/catestudy_list",
+            title: "Case Study List",
+            type: "link",
+          },
+          {
+            path: "/casestudy/add_category",
+            title: "Add Category",
+            type: "link",
+          },
+          {
+            path: "/casestudy/category_list",
+            title: "Category List",
+            type: "link",
+          },
+        ],
+      },
+      {
+        title: "Blog",
+        icon: "sample-page",
+        id: 2,
+        type: "sub",
+        active: false,
+        children: [
+          { path: "/blog/add_post", title: "Add Blog", type: "link" },
+          { path: "/blog/blog_list", title: "Blog List", type: "link" },
+          {
+            path: "/blog/add_blog_category",
+            title: "Add Category",
+            type: "link",
+          },
+          {
+            path: "/blog/blog_category_list",
+            title: "Category List",
+            type: "link",
+          },
+        ],
+      },
+      {
+        path: "/",
+        icon: "sample-page",
+        title: "Contact page",
+        type: "link",
+        id: 1,
+      },
+    ],
+  },
+  // {
+  //   title: "Miscellaneous",
+  //   menucontent: "Bonus Pages & Apps",
+  //   Items: [
+  //     {
+  //       title: "Gallery",
+  //       icon: "gallery",
+  //       id: 3,
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         {
+  //           path: "/gallery/upload_images",
+  //           title: "Upload Images",
+  //           type: "link",
+  //         },
+  //         {
+  //           path: "/gallery/gallery_images",
+  //           title: "Gallery Images",
+  //           type: "link",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  {
+    title: "Applications",
+    lanClass: "lan-8",
+    menucontent: "Ready to use Apps",
+    Items: [
+      {
+        path: "/applications/image_manager",
+        icon: "gallery",
+        title: "Image Manager",
+        type: "link",
+      },
+    ],
+  },
+
+  // {
+  //   title: "Applications",
+  //   lanClass: "lan-8",
+  //   menucontent: "Ready to use Apps",
+  //   Items: [
+  //     {
+  //       title: "Project",
+  //       id: 3,
+  //       icon: "project",
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         {
+  //           path: "/project/project_list",
+  //           type: "link",
+  //           title: "Project List",
+  //         },
+  //         { path: "/project/new_project", type: "link", title: "Create New" },
+  //       ],
+  //     },
+  //     {
+  //       path: "/app/file_manager",
+  //       icon: "file",
+  //       title: "File Manager",
+  //       type: "link",
+  //     },
+  //     {
+  //       title: "Ecommerce",
+  //       id: 6,
+  //       icon: "ecommerce",
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         {
+  //           path: "/ecommerce/add_product",
+  //           title: "Add Product",
+  //           type: "link",
+  //         },
+  //         { path: "/ecommerce/product", title: "Product", type: "link" },
+  //         {
+  //           path: "/ecommerce/product_page",
+  //           title: "Product Page",
+  //           type: "link",
+  //         },
+  //         {
+  //           path: "/ecommerce/product_list",
+  //           title: "Product List",
+  //           type: "link",
+  //         },
+  //         {
+  //           path: "/ecommerce/payment_details",
+  //           title: "Payment Details",
+  //           type: "link",
+  //         },
+  //         {
+  //           path: "/ecommerce/recent_order",
+  //           title: "Order History",
+  //           type: "link",
+  //         },
+  //         {
+  //           title: "Invoice",
+  //           type: "sub",
+  //           children: [
+  //             {
+  //               path: "/ecommerce/invoice/invoice_1",
+  //               title: "Invoice-1",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/ecommerce/invoice/invoice_2",
+  //               title: "Invoice-2",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/ecommerce/invoice/invoice_3",
+  //               title: "Invoice-3",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/ecommerce/invoice/invoice_4",
+  //               title: "Invoice-4",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/ecommerce/invoice/invoice_5",
+  //               title: "Invoice-5",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/ecommerce/invoice/invoice_6",
+  //               title: "Invoice-6",
+  //               type: "link",
+  //             },
+  //           ],
+  //         },
+  //         { path: "/ecommerce/cart", title: "Cart", type: "link" },
+  //         { path: "/ecommerce/wishlist", title: "Wishlist", type: "link" },
+  //         { path: "/ecommerce/checkout", title: "Checkout", type: "link" },
+  //         { path: "/ecommerce/pricing", title: "Pricing", type: "link" },
+  //       ],
+  //     },
+  //     {
+  //       path: "/app/letter_box",
+  //       icon: "email",
+  //       title: "Letter Box",
+  //       type: "link",
+  //       id: 7,
+  //     },
+  //     {
+  //       title: "Chat",
+  //       id: 8,
+  //       icon: "chat",
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         { path: "/chat/private_chat", type: "link", title: "Private Chat" },
+  //         { path: "/chat/group_chat", type: "link", title: "Group Chat" },
+  //       ],
+  //     },
+  //     {
+  //       title: "Users",
+  //       icon: "user",
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         { path: "/users/user_profile", type: "link", title: "User Profile" },
+  //         { path: "/users/edit_profile", type: "link", title: "User Edit" },
+  //         { path: "/users/user_cards", type: "link", title: "User Cards" },
+  //       ],
+  //     },
+  //     {
+  //       path: "/app/bookmarks",
+  //       icon: "bookmark",
+  //       type: "link",
+  //       title: "Bookmarks",
+  //       id: 10,
+  //     },
+  //     {
+  //       path: "/app/contacts",
+  //       title: "Contacts",
+  //       icon: "contact",
+  //       type: "link",
+  //       id: 11,
+  //       active: false,
+  //     },
+  //     { path: "/app/task", icon: "task", type: "link", title: "Task" },
+  //     {
+  //       path: "/app/calendar",
+  //       icon: "calendar",
+  //       type: "link",
+  //       title: "Calendar",
+  //     },
+  //     {
+  //       path: "/app/social_app",
+  //       icon: "social",
+  //       type: "link",
+  //       title: "Social App",
+  //     },
+  //     { path: "/app/todo_app", icon: "to-do", type: "link", title: "Todo" },
+  //     {
+  //       path: "/app/search_website",
+  //       icon: "search",
+  //       type: "link",
+  //       title: "Search Result",
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Forms & Table",
+  //   menucontent: "Ready to use forms & tables",
+  //   Items: [
+  //     {
+  //       title: "Forms",
+  //       id: 17,
+  //       icon: "form",
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         {
+  //           title: "Form Controls",
+  //           type: "sub",
+  //           children: [
+  //             {
+  //               path: "/forms/form_controls/validation_form",
+  //               title: "Form Validation",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_controls/base_input",
+  //               title: "Base Inputs",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_controls/radio_&_checkbox",
+  //               title: "Checkbox & Radio",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_controls/input_groups",
+  //               title: "Input Groups",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_controls/input_mask",
+  //               title: "Input Mask",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_controls/mega_option",
+  //               title: "Mega Option",
+  //               type: "link",
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           title: "Form Widget",
+  //           type: "sub",
+  //           children: [
+  //             {
+  //               path: "/forms/form_widget/datepicker",
+  //               title: "Datepicker",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_widget/touchspin",
+  //               title: "Touchspin",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_widget/switch",
+  //               title: "Switch",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_widget/typeahead",
+  //               title: "Typeahead",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_widget/clipboard",
+  //               title: "Clipboard",
+  //               type: "link",
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           title: "Form Layout",
+  //           type: "sub",
+  //           children: [
+  //             {
+  //               path: "/forms/form_layout/form_wizard_1",
+  //               title: "Form Wizard 1",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_layout/form_wizard_2",
+  //               title: "Form Wizard 2",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/forms/form_layout/two_factor",
+  //               title: "Two Factor",
+  //               type: "link",
+  //             },
+  //           ],
+  //         },
+  //       ],
+  //     },
+
+  //     {
+  //       title: "Table",
+  //       icon: "table",
+  //       id: 18,
+  //       type: "sub",
+  //       children: [
+  //         {
+  //           title: "Reactstrap Tables",
+  //           type: "sub",
+  //           children: [
+  //             {
+  //               title: "Basic Tables",
+  //               type: "link",
+  //               path: "/table/reactstrap_table/basic_table",
+  //             },
+  //             {
+  //               title: "Table Components",
+  //               type: "link",
+  //               path: "/table/reactstrap_table/table_component",
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           title: "Data Tables",
+  //           type: "sub",
+  //           children: [
+  //             {
+  //               path: "/table/data_table/basic_init",
+  //               title: "Basic Init",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/table/data_table/advance_init",
+  //               title: "Advance Init",
+  //               type: "link",
+  //             },
+  //             { path: "/table/data_table/api", title: "API", type: "link" },
+  //             {
+  //               path: "/table/data_table/data_sources",
+  //               title: "Data Source",
+  //               type: "link",
+  //             },
+  //           ],
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+
+  //     {
+  //       title: "Bonus-Ui",
+  //       icon: "bonus-kit",
+  //       id: 20,
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         { path: "/bonus_ui/scrollable", title: "Scrollable", type: "link" },
+  //         { path: "/bonus_ui/tree_view", title: "Tree View", type: "link" },
+  //         { path: "/bonus_ui/toasts", title: "Toasts", type: "link" },
+  //         { path: "/bonus_ui/rating", title: "Rating", type: "link" },
+  //         { path: "/bonus_ui/dropzone", title: "Dropzone", type: "link" },
+  //         { path: "/bonus_ui/tour", title: "Tour", type: "link" },
+  //         {
+  //           path: "/bonus_ui/sweetalert_2",
+  //           title: "SweetAlert2",
+  //           type: "link",
+  //         },
+  //         {
+  //           path: "/bonus_ui/reactstrap_carousel",
+  //           title: "Reactstrap Carousel",
+  //           type: "link",
+  //         },
+  //         { path: "/bonus_ui/ribbons", title: "Ribbons", type: "link" },
+  //         { path: "/bonus_ui/pagination", title: "Pagination", type: "link" },
+  //         { path: "/bonus_ui/breadcrumb", title: "Breadcrumb", type: "link" },
+  //         {
+  //           path: "/bonus_ui/range_slider",
+  //           title: "Range Slider",
+  //           type: "link",
+  //         },
+  //         {
+  //           path: "/bonus_ui/image_cropper",
+  //           title: "Image Cropper",
+  //           type: "link",
+  //         },
+  //         { path: "/bonus_ui/basic_cards", title: "Basic Card", type: "link" },
+  //         {
+  //           path: "/bonus_ui/creative_cards",
+  //           title: "Creative Card",
+  //           type: "link",
+  //         },
+  //         { path: "/bonus_ui/timeline", title: "Timeline", type: "link" },
+  //       ],
+  //     },
+
+  //     {
+  //       title: "Icons",
+  //       icon: "icons",
+  //       id: 21,
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         { path: "/icons/flag_icons", title: "Flag Icon", type: "link" },
+  //         {
+  //           path: "/icons/font_awesome_icon",
+  //           title: "Fontawesome Icon",
+  //           type: "link",
+  //         },
+  //         { path: "/icons/ico_icon", title: "Ico Icon", type: "link" },
+  //         { path: "/icons/themify_icon", title: "Themify Icon", type: "link" },
+  //         { path: "/icons/feather_icon", title: "Feather Icon", type: "link" },
+  //         { path: "/icons/weather_icon", title: "Weather Icon", type: "link" },
+  //       ],
+  //     },
+
+  //     {
+  //       title: "Buttons",
+  //       icon: "button",
+  //       id: 22,
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         {
+  //           path: "/buttons/default_style",
+  //           title: "Default Style",
+  //           type: "link",
+  //         },
+  //         { path: "/buttons/flat_style", title: "Flat Style", type: "link" },
+  //         { path: "/buttons/edge_style", title: "Edge Style", type: "link" },
+  //         {
+  //           path: "/buttons/raised_style",
+  //           title: "Raised Style",
+  //           type: "link",
+  //         },
+  //         {
+  //           path: "/buttons/button_group",
+  //           title: "Button Group",
+  //           type: "link",
+  //         },
+  //       ],
+  //     },
+
+  //     {
+  //       title: "Charts",
+  //       icon: "charts",
+  //       type: "sub",
+  //       id: 23,
+  //       active: false,
+  //       children: [
+  //         { path: "/charts/apex_chart", type: "link", title: "Apex Chart" },
+  //         { path: "/charts/google_chart", type: "link", title: "Google Chart" },
+  //         {
+  //           path: "/charts/chart_JS_chart",
+  //           type: "link",
+  //           title: "Chart JS Chart",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Pages",
+  //   menucontent: "All neccesory pages added",
+  //   Items: [
+  //     {
+  //       icon: "sample-page",
+  //       id: 24,
+  //       active: false,
+  //       path: "/pages/sample_page",
+  //       title: "Sample Page",
+  //       type: "link",
+  //     },
+  //     {
+  //       title: "Others",
+  //       icon: "others",
+  //       id: 25,
+  //       type: "sub",
+  //       children: [
+  //         {
+  //           title: "Error Pages",
+  //           type: "sub",
+  //           children: [
+  //             {
+  //               path: "/others/errors/error400",
+  //               title: "Error 400",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/errors/error401",
+  //               title: "Error 401",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/errors/error403",
+  //               title: "Error 403",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/errors/error404",
+  //               title: "Error 404",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/errors/error500",
+  //               title: "Error 500",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/errors/error503",
+  //               title: "Error 503",
+  //               type: "link",
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           title: "Authentication",
+  //           type: "sub",
+  //           children: [
+  //             {
+  //               path: "/others/authentication/loginsimple",
+  //               title: "Login Simple",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/loginbgimage",
+  //               title: "Login With Bg Image",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/loginbgimagetwo",
+  //               title: "Login With Image Two",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/loginvalidation",
+  //               title: "Login With Validation",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/logintooltip",
+  //               title: "Login With Tooltip",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/loginsweetalert",
+  //               title: "Login With Sweetalert",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/registersimple",
+  //               title: "Register Simple",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/registerbgimage",
+  //               title: "Register With Bg Image",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/registerbgimagetwo",
+  //               title: "Register With Bg Two",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/registerwizard",
+  //               title: "Register Wizard",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/unlockuser",
+  //               title: "Unlock User",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/forgetpassword",
+  //               title: "Forget Password",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/createpassword",
+  //               title: "Reset Password",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/authentication/maintenance",
+  //               title: "Maintenance",
+  //               type: "link",
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           title: "Coming Soon",
+  //           type: "sub",
+  //           children: [
+  //             {
+  //               path: "/others/coming_soon/comingsoonsimple",
+  //               title: "Coming Simple",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/coming_soon/comingbgvideo",
+  //               title: "Coming With Bg Video",
+  //               type: "link",
+  //             },
+  //             {
+  //               path: "/others/coming_soon/comingbgimg",
+  //               title: "Coming With Bg Image",
+  //               type: "link",
+  //             },
+  //           ],
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+
+  //     {
+  //       title: "Blog",
+  //       icon: "blog",
+  //       id: 27,
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         { path: "/blog/blog_details", title: "Blog Details", type: "link" },
+  //         { path: "/blog/blog_single", title: "Blog Single", type: "link" },
+  //         { path: "/blog/add_post", title: "Add Post", type: "link" },
+  //       ],
+  //     },
+  //     {
+  //       path: "/miscellaneous/faq",
+  //       icon: "faq",
+  //       type: "link",
+  //       active: false,
+  //       title: "FAQ",
+  //     },
+  //     {
+  //       title: "Job Search",
+  //       icon: "job-search",
+  //       id: 28,
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         { path: "/job_search/card_view", title: "Cards View", type: "link" },
+  //         { path: "/job_search/list_view", title: "List View", type: "link" },
+  //         { path: "/job_search/job_detail", title: "Job Detail", type: "link" },
+  //         { path: "/job_search/apply", title: "Apply", type: "link" },
+  //       ],
+  //     },
+  //     {
+  //       title: "Learning",
+  //       icon: "learning",
+  //       id: 29,
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         {
+  //           path: "/learning/learning_list",
+  //           title: "Learning List",
+  //           type: "link",
+  //         },
+  //         {
+  //           path: "/learning/detail_course",
+  //           title: "Detailed Course",
+  //           type: "link",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       title: "Map",
+  //       icon: "maps",
+  //       type: "sub",
+  //       id: 30,
+  //       active: false,
+  //       children: [
+  //         { path: "/map/google_map", type: "link", title: "Google Map" },
+  //         { path: "/map/leaflet_map", type: "link", title: "Leaflet Map" },
+  //       ],
+  //     },
+  //     {
+  //       title: "Editor",
+  //       id: 31,
+  //       icon: "editors",
+  //       type: "sub",
+  //       active: false,
+  //       children: [
+  //         { path: "/editor/ck_editor", type: "link", title: "CK Editor" },
+  //         { path: "/editor/mde_editor", type: "link", title: "MDE Editor" },
+  //         { path: "/editor/ace_editor", type: "link", title: "ACE Editor" },
+  //       ],
+  //     },
+
+  //     {
+  //       id: 32,
+  //       path: "/miscellaneous/knowledgebase",
+  //       icon: "knowledgebase",
+  //       type: "link",
+  //       active: false,
+  //       title: "Knowledgebase",
+  //     },
+  //     {
+  //       id: 33,
+  //       path: "/miscellaneous/support_ticket",
+  //       icon: "support-tickets",
+  //       type: "link",
+  //       active: false,
+  //       title: "SupportTicket",
+  //     },
+  //   ],
+  // },
+  // ];
+];
