@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchImages, deleteImage } from "@/redux/reducers/imageSlice";
 import { useEffect } from "react";
 import Image from "next/image";
+import SearchNotFoundClass from "@/commonComponent/searchNotFound.tsx";
 
 const DataLoop = () => {
   const dispatch = useAppDispatch();
@@ -60,17 +61,14 @@ const DataLoop = () => {
           <Col xxl="3" md="4" sm="6" key={index} className="col-ed-4">
             <Card className="card-with-border bookmark-card o-hidden">
               <div className="details-website">
-                {/* <img
-                  className="img-fluid"
-                  src={data.secure_url}
-                  alt={data.filename}
-                /> */}
-                <Image
-                  src={data.secure_url}
-                  alt={data.filename}
-                  width={300}
-                  height={200}
-                />
+                <div className="d-flex align-items-center justify-content-center alert-light-dark">
+                  <Image
+                    src={data.secure_url}
+                    alt={data.filename}
+                    width={300}
+                    height={200}
+                  />
+                </div>
                 {/* <div
                   className={`favourite-icon favourite_0 ${
                     data.fillStar ? "favourite" : ""
@@ -87,8 +85,7 @@ const DataLoop = () => {
           </Col>
         ))
       ) : (
-        // <SearchNotFoundClass word="Bookmark" />
-        <h2>hello</h2>
+        <SearchNotFoundClass word="Images" />
       )}
     </Row>
   );

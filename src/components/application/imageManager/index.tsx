@@ -27,10 +27,8 @@
 
 // export default ImageGridDescContainer;
 
-
-
 import React from "react";
-import { Col, Container, Row } from "reactstrap";
+import { Card, Col, Container, Row } from "reactstrap";
 import FileSideBar from "./sidebar";
 import FileContent from "./content";
 
@@ -41,7 +39,13 @@ const ImageManagerContainer = () => {
         <FileSideBar />
         <Col xl="9" md="12" className="box-col-12">
           <div className="file-content">
-            <FileContent />
+            <div className="email-right-aside bookmark-tabcontent">
+              <Card className="email-body radius-left">
+                <div className="ps-0">
+                  <FileContent />
+                </div>
+              </Card>
+            </div>
           </div>
         </Col>
       </Row>

@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/redux/hooks";
 import { Card, CardHeader, TabContent } from "reactstrap";
-import SearchBar from "../searchBar";
+import SearchBar from "./searchBar";
 import { FileContentButtonActions } from "./actionButtons";
 import DataLoopTab from "./dataLoopTab";
 
@@ -13,7 +13,7 @@ const FileContent = () => {
   //   });
 
   return (
-    <Card>
+    <>
       <CardHeader>
         <div className="d-md-flex d-sm-block">
           <SearchBar />
@@ -23,7 +23,7 @@ const FileContent = () => {
       <TabContent activeTab={"1"}>
         <DataLoopTab/>
       </TabContent>
-    </Card>
+      </>
   );
 };
 

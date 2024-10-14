@@ -6,13 +6,13 @@ const DescriptionData: React.FC<ImageManagerPropsType> = ({
   data,
   removeImage,
 }) => {
-  const { public_id, filename } = data;
+  const { secure_url, public_id, filename } = data;
 
   return (
     <div className="desciption-data">
       <div className="title-bookmark">
         <h5 className="title_0">{filename}</h5>
-        {/* <p className="weburl_0">{secure_url}</p> */}
+        <p className="weburl_0">{secure_url.slice(0,10).join("...")}</p>
         <div className="hover-block">
           <ul>
             <li>
