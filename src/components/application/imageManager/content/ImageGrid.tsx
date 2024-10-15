@@ -5,11 +5,18 @@ import DescriptionData from "./common/descriptionData";
 import { RootState } from "@/redux/store";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchImages, deleteImage } from "@/redux/reducers/imageSlice";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import Image from "next/image";
 import SearchNotFoundClass from "@/commonComponent/searchNotFound.tsx";
+import { ImageType } from "@/types/imageManagerType";
 
-const ImageGrid = ({
+type ImageGridPropsType = {
+  images: ImageType[];
+  gridView: boolean;
+  removeImage: (public_id: string) => void;
+};
+
+const ImageGrid: FC<ImageGridPropsType> = ({
   images,
   gridView,
   removeImage,
@@ -44,7 +51,7 @@ const ImageGrid = ({
   </Row>
 );
 
-const ImageTab = ({ filterFormat }) => {
+const ImageTab = ({ filterFormat }: { filterFormat: string }) => {
   const dispatch = useAppDispatch();
   const { images, gridView } = useAppSelector(
     (state: RootState) => state.image
