@@ -38,6 +38,7 @@ export interface HeaderTabContentType {
     menu?: MenuItem[] | undefined;
     level: number;
     className?: string;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     setActiveMenu: Function;
     activeMenu: unknown[];
   }
