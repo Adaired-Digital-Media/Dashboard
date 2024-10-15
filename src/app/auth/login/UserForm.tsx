@@ -83,11 +83,7 @@ const UserForm: React.FC = () => {
         }
       } catch (error) {
         console.error("Login error:", error);
-        Swal.fire(
-          "Error",
-          error?.response?.data?.message || "Login failed. Please try again.",
-          "error"
-        );
+        Swal.fire("Error", "Login failed. Please try again.", "error");
       }
     },
     [router]
@@ -147,9 +143,7 @@ const UserForm: React.FC = () => {
                 )}
               />
               <div
-                className={`show-hide ${
-                  errors.password ? "invisible" : ""
-                }`}
+                className={`show-hide ${errors.password ? "invisible" : ""}`}
                 onClick={() => setShowPassword((prev) => !prev)}
               >
                 {showPassword ? (
