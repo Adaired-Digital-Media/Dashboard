@@ -10,6 +10,8 @@ interface ImageState {
   success: boolean;
   error: string | null;
   gridView: boolean;
+  activeTabs: string;
+  addModal: boolean;
 }
 
 const initialState: ImageState = {
@@ -20,13 +22,22 @@ const initialState: ImageState = {
   success: false,
   error: null,
   gridView: true,
+  activeTabs: "1",
+  addModal: false,
 };
 
+export const fetchIcons = createAsyncThunk("images/fetchIcons", async () => {
+  const { data } = await api.get(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/multer/getSvgMedia`
+  );
+  return data.data;
+});
+
 export const fetchImages = createAsyncThunk("images/fetchImages", async () => {
-  const response = await api.get(
+  const { data } = await api.get(
     `${process.env.NEXT_PUBLIC_BASE_URL}/multer/getUploadedMedia`
   );
-  return response.data.data;
+  return data.data;
 });
 
 export const deleteImage = createAsyncThunk(
@@ -43,14 +54,12 @@ export const uploadImages = createAsyncThunk(
   "images/uploadImages",
   async (files: File[]) => {
     const formData = new FormData();
-    files.forEach((file) => {
-      formData.append("files", file);
-    });
-    const response = await api.post(
+    files.forEach((file) => formData.append("files", file));
+    const { data } = await api.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/multer/upload`,
       formData
     );
-    return response.data;
+    return data;
   }
 );
 
@@ -66,24 +75,39 @@ const imageSlice = createSlice({
     setGridView: (state, action) => {
       state.gridView = action.payload;
     },
+    setAddModal: (state) => {
+      state.addModal = !state.addModal;
+    },
+    updateActiveTabs: (state, action) => {
+      state.activeTabs = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-      // Fetch Images
       .addCase(fetchImages.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(fetchImages.fulfilled, (state, action) => {
         state.isLoading = false;
         state.images = action.payload;
-        state.error = null;
       })
       .addCase(fetchImages.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || "Failed to fetch images";
       })
 
-      // Delete Image
+      .addCase(fetchIcons.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchIcons.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.images = [...state.images, ...action.payload];
+      })
+      .addCase(fetchIcons.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message || "Failed to fetch icons";
+      })
+
       .addCase(deleteImage.pending, (state) => {
         state.deleteLoading = true;
       })
@@ -92,21 +116,19 @@ const imageSlice = createSlice({
         state.images = state.images.filter(
           (image) => image.public_id !== action.payload
         );
-        state.error = null;
       })
       .addCase(deleteImage.rejected, (state, action) => {
         state.deleteLoading = false;
         state.error = action.error.message || "Failed to delete image";
       })
 
-      // Upload Images
       .addCase(uploadImages.pending, (state) => {
         state.uploadLoading = true;
       })
-      .addCase(uploadImages.fulfilled, (state) => {
+      .addCase(uploadImages.fulfilled, (state, action) => {
         state.uploadLoading = false;
         state.success = true;
-        state.error = null;
+        state.images = [...state.images, ...action.payload.data];
       })
       .addCase(uploadImages.rejected, (state, action) => {
         state.uploadLoading = false;
@@ -116,6 +138,6 @@ const imageSlice = createSlice({
   },
 });
 
-export const { resetUploadState, setGridView } = imageSlice.actions;
-
+export const { resetUploadState, setGridView, updateActiveTabs, setAddModal } =
+  imageSlice.actions;
 export default imageSlice.reducer;

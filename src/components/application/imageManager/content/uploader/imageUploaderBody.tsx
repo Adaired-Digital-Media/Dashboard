@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { Button, Toast, ToastBody } from "reactstrap";
 import { RootState } from "@/redux/store";
-import { uploadImages, resetUploadState } from "@/redux/reducers/imageSlice";
+import {
+  uploadImages,
+  resetUploadState,
+  fetchImages,
+} from "@/redux/reducers/imageSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
   Dropzone,
@@ -59,7 +63,6 @@ const ImageUploadBody = () => {
         .map((extFile) => extFile.file)
         .filter(Boolean) as File[];
       dispatch(uploadImages(filesToUpload));
-      setShowLoadingToast(true);
     } catch (error) {
       console.error("Error uploading images:", error);
     }
@@ -76,8 +79,9 @@ const ImageUploadBody = () => {
   useEffect(() => {
     if (success) {
       setShowSuccessToast(true);
-      setExtFiles([]); // Clear files only if upload is successful
-      dispatch(resetUploadState()); // Reset state
+      setExtFiles([]); 
+      dispatch(resetUploadState()); 
+      dispatch(fetchImages());
     }
   }, [success, dispatch]);
 

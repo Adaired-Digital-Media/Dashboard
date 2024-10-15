@@ -16,7 +16,7 @@ import Swal from "sweetalert2";
 import dynamic from "next/dynamic";
 import api from "@/config/axiosConfig";
 import { useRouter } from "nextjs-toploader/app";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { setNavId } from "@/redux/reducers/addPostSlice";
 import { BlogCategoryTypes } from "@/types/blogCategoryType";
@@ -82,7 +82,6 @@ const PostBody: FC = () => {
     control,
     setValue,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {

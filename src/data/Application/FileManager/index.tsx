@@ -1,36 +1,52 @@
-import { AlertCircle, Clock, Folder, Home, Star, Trash2 } from "react-feather";
+import {
+  // AlertCircle, Clock,  Home,  Trash2
+  Folder,
+  Star,
+} from "react-feather";
 
 export const FileSideButton = [
-  {
-    className: "primary",
-    icon: <Home />,
-    title: "Home",
-  },
   {
     className: "light",
     icon: <Folder />,
     title: "All",
+    id: "1",
   },
   {
     className: "light",
-    icon: <Clock />,
-    title: "Recent",
+    icon: <Folder />,
+    title: "Images",
+    id: "2",
   },
   {
     className: "light",
     icon: <Star />,
-    title: "Starred",
+    title: "SVG Icons",
+    id: "3",
   },
-  {
-    className: "light",
-    icon: <AlertCircle />,
-    title: "Recovery",
-  },
-  {
-    className: "light",
-    icon: <Trash2 />,
-    title: "Deleted",
-  },
+  // {
+  //   className: "light",
+  //   icon: <Home />,
+  //   title: "Home",
+  //   id: "1",
+  // },
+  // {
+  //   className: "light",
+  //   icon: <Clock />,
+  //   title: "Recent",
+  //   id:"4"
+  // },
+  // {
+  //   className: "light",
+  //   icon: <AlertCircle />,
+  //   title: "Recovery",
+  //   id:"5"
+  // },
+  // {
+  //   className: "light",
+  //   icon: <Trash2 />,
+  //   title: "Deleted",
+  //   id:"6"
+  // },
 ];
 
 export const QuickAccessData = [

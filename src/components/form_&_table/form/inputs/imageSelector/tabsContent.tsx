@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchImages, ImageType } from "@/redux/reducers/imageSlice";
 import { RootState } from "@/redux/store";
-import ImageUploadBody from "@/components/application/imageManager/content/imageUploaderBody";
+import ImageUploadBody from "@/components/application/imageManager/content/uploader/imageUploaderBody";
 
 export interface TabsContentProp {
   basicTab: string;

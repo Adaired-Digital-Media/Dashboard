@@ -138,8 +138,8 @@ const PageBody = ({ slug }: { slug: string }) => {
       );
       setServiceId(result.data._id);
       const fetchedBodyData = result.data.bodyData || [];
-      setBodyData(fetchedBodyData);
-      setSelectedComponents(fetchedBodyData);
+      dispatch(setBodyData(fetchedBodyData));
+      dispatch(setSelectedComponents(fetchedBodyData));
 
       // Extract the last segment after the last forward slash and remove any file extension
       const extractLastSegment = (url: string) => {
@@ -278,9 +278,6 @@ const PageBody = ({ slug }: { slug: string }) => {
                 setBodyData={(data) => dispatch(setBodyData(data))}
                 bodyData={bodyData}
               />
-              {/* <Col className="select-component-buttons">
-                <ComponentSelectButton selectedItem={handleComponentSelect} />
-              </Col> */}
             </TabPane>
             <TabPane tabId={"2"}>
               <FormGroup>

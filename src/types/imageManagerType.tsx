@@ -1,4 +1,5 @@
 export interface ImageType {
+    format: string;
     asset_id: string;
     public_id: string;
     folder: string;

@@ -168,7 +168,7 @@ const UserForm: React.FC = () => {
             <div className="checkbox p-0">
               <Input
                 type="checkbox"
-                id="rememberMe"
+                id="checkbox1"
                 {...register("rememberMe")}
               />
               <Label className="text-muted" htmlFor="checkbox1">

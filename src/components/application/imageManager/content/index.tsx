@@ -1,17 +1,12 @@
-import { useAppSelector } from "@/redux/hooks";
-import { Card, CardHeader, TabContent } from "reactstrap";
+import { CardHeader, TabContent, TabPane } from "reactstrap";
 import SearchBar from "./searchBar";
-import { FileContentButtonActions } from "./actionButtons";
-import DataLoopTab from "./dataLoopTab";
+import { FileContentButtonActions } from "./common/actionButtons";
+import { AllImages, Images, SvgIcons } from "./ImageGrid";
+import { useAppSelector } from "@/redux/hooks";
+import UploadImageModal from "./uploader/uploadImageModal";
 
 const FileContent = () => {
-  //   const { myFile, searchTerm } = useAppSelector((state) => state.fileManager);
-
-  //   const fileList = myFile.filter((data) => {
-  //     if (searchTerm == null) return data;
-  //     if (data.name.toLowerCase().includes(searchTerm.toLowerCase())) return data
-  //   });
-
+  const { activeTabs } = useAppSelector((state) => state.image);
   return (
     <>
       <CardHeader>
@@ -20,10 +15,19 @@ const FileContent = () => {
           <FileContentButtonActions />
         </div>
       </CardHeader>
-      <TabContent activeTab={"1"}>
-        <DataLoopTab/>
+      <TabContent activeTab={activeTabs}>
+        <TabPane tabId="1">
+          <AllImages />
+        </TabPane>
+        <TabPane tabId="2">
+          <Images />
+        </TabPane>
+        <TabPane tabId="3">
+          <SvgIcons />
+        </TabPane>
+        <UploadImageModal/>
       </TabContent>
-      </>
+    </>
   );
 };
 
