@@ -3,9 +3,10 @@ import React, { useEffect } from "react";
 import { Label, TabContent, TabPane, Col, Row, Input } from "reactstrap";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { fetchImages, ImageType } from "@/redux/reducers/imageSlice";
+import { fetchImages } from "@/redux/reducers/imageSlice";
 import { RootState } from "@/redux/store";
 import ImageUploadBody from "@/components/application/imageManager/content/uploader/imageUploaderBody";
+import { ImageType } from "@/types/imageManagerType";
 
 export interface TabsContentProp {
   basicTab: string;
