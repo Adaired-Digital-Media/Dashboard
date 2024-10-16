@@ -12,7 +12,7 @@ import {
   Row,
 } from "reactstrap";
 import { z } from "zod";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 import api from "@/config/axiosConfig";
@@ -34,6 +34,7 @@ import {
   setSelectedComponents,
   setBodyData,
 } from "@/redux/reducers/floatingWidgetSlice";
+import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 
 const schema = z.object({
   metaTitle: z.string().min(3, {
@@ -194,10 +195,10 @@ const PageBody = ({ slug }: { slug: string }) => {
           formData
         );
 
-        router.push("/services/service_list");
+        router.push("/pages/services/service_list");
         Swal.fire({
           icon: "success",
-          title: "Service created successfully",
+          title: "Service Updated successfully",
           text: "Page will be revalidated shortly.",
           timer: 2000,
         });
@@ -227,13 +228,7 @@ const PageBody = ({ slug }: { slug: string }) => {
           }
         );
       } catch (error) {
-        console.log("Error : ", error);
-        Swal.fire({
-          icon: "error",
-          title: "Error creating service",
-          text: error?.response?.data?.message,
-          confirmButtonText: "Okay",
-        });
+        AxiosErrorHandler.handleError(error);
       }
     },
     [bodyData, router, serviceId]

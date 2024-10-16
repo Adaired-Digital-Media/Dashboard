@@ -34,6 +34,7 @@ import {
   setSelectedComponents,
   setBodyData,
 } from "@/redux/reducers/floatingWidgetSlice";
+import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 
 const schema = z.object({
   metaTitle: z.string().min(3, {
@@ -153,7 +154,7 @@ const PageBody: FC = () => {
             timeout: 5000,
           }
         );
-        router.push("/services/service_list");
+        router.push("/pages/services/service_list");
         Swal.fire({
           icon: "success",
           title: "Service created successfully",
@@ -161,13 +162,7 @@ const PageBody: FC = () => {
           timer: 2000,
         });
       } catch (error) {
-        console.log("Error : ", error);
-        Swal.fire({
-          icon: "error",
-          title: "Error creating service",
-          text: error?.response?.data?.message,
-          confirmButtonText: "Okay",
-        });
+        AxiosErrorHandler.handleError(error);
       }
     },
     [bodyData, router]

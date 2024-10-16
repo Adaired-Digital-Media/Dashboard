@@ -109,7 +109,7 @@ const ProductListContainer = () => {
           <ActionDataSource
             id={row._id}
             slug={row.slug}
-            editUrl={`/services/update_service/`}
+            editUrl={`/pages/services/update_service/`}
             viewUrl={`${process.env.NEXT_PUBLIC_WEB_URI}/services/${row.slug}`}
             handleConfirmDelete={deleteFunction}
             duplicateFunction={deleteFunction}

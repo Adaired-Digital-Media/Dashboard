@@ -8,7 +8,6 @@ import CustomBadge from "@/components/form_&_table/table/common/customBadge";
 import ActionDataSource from "@/components/form_&_table/table/common/actionDataSource";
 import api from "@/config/axiosConfig";
 
-
 export type postType = {
   _id: string;
   metaTitle: string;
@@ -158,11 +157,10 @@ const PostListContainer = () => {
           <ActionDataSource
             id={row._id}
             slug={row.slug}
-            editUrl={`/blog/update_post`}
+            editUrl={`/pages/blog/update_post`}
             viewUrl={`${process.env.NEXT_PUBLIC_WEB_URI}/blog/${row.slug}`}
             handleConfirmDelete={deleteFunction}
             duplicateFunction={duplicateFunction}
-            setPosts={setPosts}
           />
         ),
         sortable: true,

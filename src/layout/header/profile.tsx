@@ -29,8 +29,8 @@ export const Profile = () => {
     <li className="profile-nav onhover-dropdown px-0 py-0">
       <div className="d-flex profile-media align-items-center">
         <img
-          className="img-30 rounded-circle"
-          src={`${ImagePath}/dashboard/profile.jpg`}
+          className="img-40 rounded-circle bg-gray"
+          src={`${ImagePath}/dashboard-4/user.png`}
           alt="Profile"
         />
         <div className="flex-grow-1">

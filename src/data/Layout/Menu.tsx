@@ -1,6 +1,4 @@
-import { MenuItem } from "@/Types/LayoutTypes";
-
-export const MenuList: MenuItem[] | undefined = [
+export const MenuList = [
   {
     title: "General",
     lanClass: "lan-1",
@@ -20,14 +18,14 @@ export const MenuList: MenuItem[] | undefined = [
     menucontent: "All neccesory pages",
     Items: [
       {
-        path: "/",
+        path: "/pages/home",
         icon: "sample-page",
         title: "Home page",
         type: "link",
         id: 1,
       },
       {
-        path: "/",
+        path: "/pages/home",
         icon: "sample-page",
         title: "About page",
         type: "link",
@@ -40,9 +38,9 @@ export const MenuList: MenuItem[] | undefined = [
         type: "sub",
         active: false,
         children: [
-          { path: "/services/add_service", title: "Add Service", type: "link" },
+          { path: "/pages/services/add_service", title: "Add Service", type: "link" },
           {
-            path: "/services/service_list",
+            path: "/pages/services/service_list",
             title: "Service List",
             type: "link",
           },
@@ -56,22 +54,22 @@ export const MenuList: MenuItem[] | undefined = [
         active: false,
         children: [
           {
-            path: "/casestudy/add_casestudy",
+            path: "/pages/casestudy/add_casestudy",
             title: "Add Case Study",
             type: "link",
           },
           {
-            path: "/casestudy/catestudy_list",
+            path: "/pages/casestudy/catestudy_list",
             title: "Case Study List",
             type: "link",
           },
           {
-            path: "/casestudy/add_category",
+            path: "/pages/casestudy/add_category",
             title: "Add Category",
             type: "link",
           },
           {
-            path: "/casestudy/category_list",
+            path: "/pages/casestudy/category_list",
             title: "Category List",
             type: "link",
           },
@@ -84,22 +82,22 @@ export const MenuList: MenuItem[] | undefined = [
         type: "sub",
         active: false,
         children: [
-          { path: "/blog/add_post", title: "Add Blog", type: "link" },
+          { path: "/pages/blog/add_post", title: "Add Blog", type: "link" },
           { path: "/blog/blog_list", title: "Blog List", type: "link" },
           {
-            path: "/blog/add_blog_category",
+            path: "/pages/blog/add_blog_category",
             title: "Add Category",
             type: "link",
           },
           {
-            path: "/blog/blog_category_list",
+            path: "/pages/blog/blog_category_list",
             title: "Category List",
             type: "link",
           },
         ],
       },
       {
-        path: "/",
+        path: "/pages/contact",
         icon: "sample-page",
         title: "Contact page",
         type: "link",

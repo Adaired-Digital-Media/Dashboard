@@ -24,6 +24,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import React, { FC, useEffect, useState, useCallback } from "react";
 import SubmitButton from "@/components/pages/pageLayout/submitButton";
 import CodeEditor from "@/components/form_&_table/form/inputs/codeEditor";
+import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 
 // Dynamically import components
 const Editor = dynamic(
@@ -126,7 +127,7 @@ const PostBody: FC = () => {
           { slug: `/blog` },
           { headers: { "Content-Type": "application/json" }, timeout: 5000 }
         );
-        router.push(`/blog/blog_list`);
+        router.push(`/pages/blog/blog_list`);
         Swal.fire({
           title: "Blog created successfully",
           text: "Blog page will be revalidated shortly.",
@@ -135,13 +136,7 @@ const PostBody: FC = () => {
           timer: 2000,
         });
       } catch (error) {
-        console.error("Error submitting the form:", error);
-        Swal.fire({
-          title: "Error creating the blog",
-          text: error?.response?.data?.message,
-          icon: "error",
-          confirmButtonText: "Okay",
-        });
+        AxiosErrorHandler.handleError(error);
       }
     },
     [router]

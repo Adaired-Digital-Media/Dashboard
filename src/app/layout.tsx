@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 "use client";
 import NoSsr from "@/utils/NoSsr";
-import "../../src/index.scss";
+import "../index.scss";
 import MainProvider from "./MainProvider";
 import NextTopLoader from "nextjs-toploader";
 import useAuthCheck from "@/hooks/useAuthCheck";
