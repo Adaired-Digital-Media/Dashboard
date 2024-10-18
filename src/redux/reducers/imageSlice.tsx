@@ -26,19 +26,16 @@ const initialState: ImageState = {
   addModal: false,
 };
 
-export const fetchIcons = createAsyncThunk("images/fetchIcons", async () => {
-  const { data } = await api.get(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/multer/getSvgMedia`
-  );
-  return data.data;
-});
+export const fetchImages = createAsyncThunk<ImageType[], { page: number; limit: number; fileType: string }, { rejectValue: string }>(
+  "images/fetchImages",
+  async ({ page = 1, limit = 20, fileType = "all" }) => {
+    const { data } = await api.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/multer/getUploadedMedia?page=${page}&limit=${limit}&fileType=${fileType}`
+    );
+    return data.data;
+  }
+);
 
-export const fetchImages = createAsyncThunk("images/fetchImages", async () => {
-  const { data } = await api.get(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/multer/getUploadedMedia`
-  );
-  return data.data;
-});
 
 export const deleteImage = createAsyncThunk(
   "images/deleteImage",
@@ -94,18 +91,6 @@ const imageSlice = createSlice({
       .addCase(fetchImages.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || "Failed to fetch images";
-      })
-
-      .addCase(fetchIcons.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchIcons.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.images = [...state.images, ...action.payload];
-      })
-      .addCase(fetchIcons.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message || "Failed to fetch icons";
       })
 
       .addCase(deleteImage.pending, (state) => {

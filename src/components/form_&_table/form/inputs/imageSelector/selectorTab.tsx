@@ -36,7 +36,6 @@ const SelectorTab: React.FC<{ onImageSelect: (image: string) => void }> = ({
               </NavLink>
             </NavItem>
           </Nav>
-          {/* Pass the onImageSelect prop here */}
           <TabsContent basicTab={basicTab} onImageSelect={onImageSelect} />
         </CardBody>
       </Card>

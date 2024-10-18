@@ -5,7 +5,7 @@ import DescriptionData from "./common/descriptionData";
 import { RootState } from "@/redux/store";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchImages, deleteImage } from "@/redux/reducers/imageSlice";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import SearchNotFoundClass from "@/commonComponent/searchNotFound.tsx";
 import { ImageType } from "@/types/imageManagerType";
@@ -24,14 +24,15 @@ const ImageGrid: FC<ImageGridPropsType> = ({
 }) => (
   <Row id="bookmarkData">
     {images.length > 0 ? (
+      (console.log("Fetched Images: ",images),
       images.map((data, index) => (
-        <Col xxl="3" md="4" sm="6" key={index} className="col-ed-4">
+        <Col xxl="3" md="4" sm="6" key={data.public_id} className="col-ed-4">
           <Card className="card-with-border bookmark-card o-hidden">
             <div className="details-website">
               <div className="d-flex align-items-center justify-content-center alert-light-dark">
                 <Image
                   src={data.secure_url}
-                  alt={data.filename}
+                  alt={data.context?.alt}
                   width={300}
                   height={200}
                 />
@@ -44,7 +45,7 @@ const ImageGrid: FC<ImageGridPropsType> = ({
             </div>
           </Card>
         </Col>
-      ))
+      )))
     ) : (
       <SearchNotFoundClass word="Images" />
     )}
@@ -56,19 +57,15 @@ const ImageTab = ({ filterFormat }: { filterFormat: string }) => {
   const { images, gridView } = useAppSelector(
     (state: RootState) => state.image
   );
+  const [currentPage, setCurrentPage] = useState(1);
+  const limit = 20;
 
-  const filteredImages = images.filter((image) => {
-    if (filterFormat === "svg") {
-      return image.format === "svg";
-    }
-    if (filterFormat === "all") {
-      return true;
-    }
-    return image.format !== "svg";
-  });
+  const fetchImagesWithParams = (page: number, type: string) => {
+    dispatch(fetchImages({ page, limit, fileType: type }));
+  };
 
   useEffect(() => {
-    dispatch(fetchImages());
+    fetchImagesWithParams(currentPage, filterFormat);
   }, [dispatch]);
 
   const removeImage = (fileName: string) => {
@@ -99,11 +96,22 @@ const ImageTab = ({ filterFormat }: { filterFormat: string }) => {
           }`}
         >
           <ImageGrid
-            images={filteredImages}
+            images={images}
             gridView={gridView}
             removeImage={removeImage}
             // onHandleClick={onHandleClick}
           />
+        </div>
+        <div className="pagination-controls">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <button onClick={() => setCurrentPage((prev) => prev + 1)}>
+            Next
+          </button>
         </div>
       </CardBody>
     </Card>
@@ -111,6 +119,6 @@ const ImageTab = ({ filterFormat }: { filterFormat: string }) => {
 };
 
 // Components for each tab
-export const Images = () => <ImageTab filterFormat="exclude" />;
+export const Images = () => <ImageTab filterFormat="non-svg" />;
 export const SvgIcons = () => <ImageTab filterFormat="svg" />;
 export const AllImages = () => <ImageTab filterFormat="all" />;
