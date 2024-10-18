@@ -137,6 +137,8 @@ const PageBody = ({ slug }: { slug: string }) => {
       const result = await api.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/service/getServices/${slug}`
       );
+
+      console.log("Result : ", result.data);
       setServiceId(result.data._id);
       const fetchedBodyData = result.data.bodyData || [];
       dispatch(setBodyData(fetchedBodyData));
@@ -165,6 +167,9 @@ const PageBody = ({ slug }: { slug: string }) => {
             ? undefined
             : result.data.parentService || undefined,
         status: result.data.status || "",
+        bodyScript: result.data.bodyScript || "",
+        headerScript: result.data.headerScript || "",
+        footerScript: result.data.footerScript || "",
       });
     } catch (error) {
       console.error("Error fetching services : ", error);
