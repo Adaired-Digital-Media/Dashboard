@@ -1,7 +1,14 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Swal, { SweetAlertResult } from "sweetalert2";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+} from "reactstrap";
+import { MoreVertical } from "react-feather";
 
 interface Identifiable {
   _id: string;
@@ -24,6 +31,9 @@ const ActionDataSource = <T extends Identifiable>({
   handleConfirmDelete,
   duplicateFunction,
 }: ActionDataSourceProp<T>) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen((prevState) => !prevState);
+
   // Function to handle the delete action
   const handleDelete = () => {
     Swal.fire({
@@ -91,25 +101,54 @@ const ActionDataSource = <T extends Identifiable>({
   ];
 
   return (
-    <ul className="action simple-list justify-content-between gap-2" key={id}>
-      {actions.map((action) => (
-        <li className={`${action.name} cursor-pointer`} key={action.name}>
-          {action.link ? (
-            <Link href={action.link}>
-              {React.cloneElement(action.icon, {
-                id: `Tooltip-${action.name}`,
-              })}
-            </Link>
-          ) : (
-            <div onClick={action.onClick}>
-              {React.cloneElement(action.icon, {
-                id: `Tooltip-${action.name}`,
-              })}
-            </div>
-          )}
-        </li>
-      ))}
-    </ul>
+    <div>
+      <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+        <DropdownToggle tag={"div"}>
+          <MoreVertical />
+        </DropdownToggle>
+        <DropdownMenu start>
+          {actions.map((action, index) => (
+            <DropdownItem key={action.name}>
+              {action.link ? (
+                <Link href={action.link} className="p-2 d-flex gap-2">
+                  {React.cloneElement(action.icon, {
+                    id: `Tooltip-${action.name}`,
+                  })}
+                  {action.tooltip}
+                </Link>
+              ) : (
+                <div onClick={action.onClick} className="p-2 d-flex gap-2">
+                  {React.cloneElement(action.icon, {
+                    id: `Tooltip-${action.name}`,
+                  })}
+                  {action.tooltip}
+                </div>
+              )}
+            </DropdownItem>
+          ))}
+        </DropdownMenu>
+      </Dropdown>
+    </div>
+
+    // <ul className="action simple-list justify-content-between gap-2" key={id}>
+    //   {actions.map((action) => (
+    //     <li className={`${action.name} cursor-pointer`} key={action.name}>
+    //       {action.link ? (
+    //         <Link href={action.link}>
+    //           {React.cloneElement(action.icon, {
+    //             id: `Tooltip-${action.name}`,
+    //           })}
+    //         </Link>
+    //       ) : (
+    //         <div onClick={action.onClick}>
+    //           {React.cloneElement(action.icon, {
+    //             id: `Tooltip-${action.name}`,
+    //           })}
+    //         </div>
+    //       )}
+    //     </li>
+    //   ))}
+    // </ul>
   );
 };
 

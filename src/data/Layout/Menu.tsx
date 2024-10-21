@@ -83,7 +83,7 @@ export const MenuList = [
         active: false,
         children: [
           { path: "/pages/blog/add_post", title: "Add Blog", type: "link" },
-          { path: "/blog/blog_list", title: "Blog List", type: "link" },
+          { path: "/pages/blog/blog_list", title: "Blog List", type: "link" },
           {
             path: "/pages/blog/add_blog_category",
             title: "Add Category",

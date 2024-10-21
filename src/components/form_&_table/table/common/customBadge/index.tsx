@@ -15,7 +15,10 @@ const CustomBadge: React.FC<CustomBadgeProps> = ({
   pill,
 }) => {
   return (
-    <Badge pill={pill} color={color} className={`text-capitalize ${className}`}>
+    <Badge
+      color=""
+      className={`text-capitalize badge-light-${color} ${className}`}
+    >
       {text}
     </Badge>
   );

@@ -1,0 +1,22 @@
+export type BlogType = {
+  _id?: any;
+  category: string;
+  author?: string;
+  postTitle: string;
+  postDescription: string;
+  featuredImage: string;
+  exerpt: string;
+  metaTitle: string;
+  metaDescription: string;
+  slug: string;
+  canonicalLink: string;
+  openGraphImage?: string;
+  tags: string;
+  robotsText?: string;
+  status: string;
+  bodyScript?: string;
+  headerScript?: string;
+  footerScript?: string;
+  createdAt: string;
+  updatedAt?: string;
+};

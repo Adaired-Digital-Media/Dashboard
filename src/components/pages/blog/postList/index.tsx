@@ -1,32 +1,33 @@
 "use client";
-import { SearchTableButton } from "@/constant";
-import axios from "axios";
+
+// React Imports
 import React, { useEffect, useMemo, useState, useCallback } from "react";
-import DataTable from "react-data-table-component";
-import { Card, CardBody, Col, Container, Input, Label, Row } from "reactstrap";
-import CustomBadge from "@/components/form_&_table/table/common/customBadge";
-import ActionDataSource from "@/components/form_&_table/table/common/actionDataSource";
+
+// Constants Imports
+import { SearchTableButton } from "@/constant";
+
+// Axios and Axios Instance Imports
+import axios from "axios";
 import api from "@/config/axiosConfig";
 
-export type postType = {
-  _id: string;
-  metaTitle: string;
-  metaDescription: string;
-  canonicalLink: string;
-  openGraphImage?: string;
-  robotsText?: string;
-  category: string;
-  featuredImage: string;
-  postTitle: string;
-  postDescription: string;
-  slug: string;
-  tags: string;
-  status: string;
-  createdAt: string;
-};
+// Data Table Imports
+import DataTable from "react-data-table-component";
+
+// Reactstrap Imports
+import { Card, CardBody, Col, Container, Input, Label, Row } from "reactstrap";
+
+// Custom Components
+import CustomBadge from "@/components/form_&_table/table/common/customBadge";
+import ActionDataSource from "@/components/form_&_table/table/common/actionDataSource";
+
+// Types Imports
+import type { BlogType } from "@/types/BlogType";
+import FilterHeader from "./filterHeader";
+import CollapseFilterData from "./collapseFilterData";
 
 const PostListContainer = () => {
-  const [posts, setPosts] = useState<postType[]>([]);
+  // States
+  const [posts, setPosts] = useState<BlogType[]>([]);
   const [filterText, setFilterText] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -47,10 +48,10 @@ const PostListContainer = () => {
       if (response.status !== 200) {
         throw new Error("Network response was not ok");
       }
-      const data: postType[] = response.data;
+      const data: BlogType[] = response.data;
 
       // Sort posts by createdAt, newest first
-      const sortedPosts = data.sort((a: postType, b: postType) => {
+      const sortedPosts = data.sort((a: BlogType, b: BlogType) => {
         return (
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
@@ -124,24 +125,24 @@ const PostListContainer = () => {
     () => [
       {
         name: "S. No.",
-        selector: (row: postType) => posts.indexOf(row) + 1,
+        selector: (row: BlogType) => posts.indexOf(row) + 1,
         sortable: true,
         grow: 0.2,
       },
       {
         name: "Post Title",
-        selector: (row: postType) => row.postTitle,
+        selector: (row: BlogType) => row.postTitle,
         sortable: true,
         grow: 2,
       },
       {
         name: "Slug",
-        selector: (row: postType) => row.slug,
+        selector: (row: BlogType) => row.slug,
         sortable: true,
       },
       {
         name: "Status",
-        cell: (row: postType) => (
+        cell: (row: BlogType) => (
           <CustomBadge
             color={`${row.status !== "draft" ? "success" : "danger"}`}
             text={row.status}
@@ -153,7 +154,7 @@ const PostListContainer = () => {
       },
       {
         name: "Action",
-        cell: (row: postType) => (
+        cell: (row: BlogType) => (
           <ActionDataSource
             id={row._id}
             slug={row.slug}
@@ -175,19 +176,28 @@ const PostListContainer = () => {
         <Col sm="12">
           <Card>
             <CardBody>
-              <DataTable
-                className="theme-scrollbar"
-                data={filterText !== "" ? filteredItems : posts}
-                columns={HtmlColumn}
-                striped
-                highlightOnHover
-                pagination
-                fixedHeader
-                subHeader
-                subHeaderComponent={subHeaderComponentMemo}
-                pointerOnHover
-                progressPending={isLoading}
-              />
+              <div className="list-product-header">
+                <FilterHeader />
+                <CollapseFilterData />
+              </div>
+              <div className="list-product">
+                <div className="table-responsive">
+                  <DataTable
+                    className="theme-scrollbar"
+                    data={filterText !== "" ? filteredItems : posts}
+                    columns={HtmlColumn}
+                    striped
+                    highlightOnHover
+                    pagination
+                    fixedHeader
+                    subHeader
+                    selectableRows
+                    subHeaderComponent={subHeaderComponentMemo}
+                    pointerOnHover
+                    progressPending={isLoading}
+                  />
+                </div>
+              </div>
             </CardBody>
           </Card>
         </Col>
