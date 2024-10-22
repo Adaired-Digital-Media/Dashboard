@@ -129,26 +129,6 @@ const ActionDataSource = <T extends Identifiable>({
         </DropdownMenu>
       </Dropdown>
     </div>
-
-    // <ul className="action simple-list justify-content-between gap-2" key={id}>
-    //   {actions.map((action) => (
-    //     <li className={`${action.name} cursor-pointer`} key={action.name}>
-    //       {action.link ? (
-    //         <Link href={action.link}>
-    //           {React.cloneElement(action.icon, {
-    //             id: `Tooltip-${action.name}`,
-    //           })}
-    //         </Link>
-    //       ) : (
-    //         <div onClick={action.onClick}>
-    //           {React.cloneElement(action.icon, {
-    //             id: `Tooltip-${action.name}`,
-    //           })}
-    //         </div>
-    //       )}
-    //     </li>
-    //   ))}
-    // </ul>
   );
 };
 

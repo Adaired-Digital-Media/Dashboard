@@ -132,8 +132,6 @@ const PostBody: FC = () => {
           title: "Blog created successfully",
           text: "Blog page will be revalidated shortly.",
           icon: "success",
-          // confirmButtonText: "Okay",
-          timer: 2000,
         });
       } catch (error) {
         AxiosErrorHandler.handleError(error);

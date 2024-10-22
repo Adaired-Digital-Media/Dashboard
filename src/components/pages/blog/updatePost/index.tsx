@@ -5,11 +5,7 @@ import PageLayout from "@/components/pages/pageLayout";
 import { setNavId } from "@/redux/reducers/addPostSlice";
 import GlobalSidebar from "@/components/pages/pageLayout/globalSidebar";
 
-type Props = {
-  slug: string;
-};
-
-const UpdatePostContainer = (slug: Props) => {
+const UpdatePostContainer = ({ slug }: { slug: string }) => {
   const dispatch = useAppDispatch();
   return (
     <PageLayout
@@ -22,7 +18,7 @@ const UpdatePostContainer = (slug: Props) => {
           sliceName="addPost"
         />
       }
-      TabContent={<PostBody />}
+      TabContent={<PostBody slug={slug} />}
     />
   );
 };
