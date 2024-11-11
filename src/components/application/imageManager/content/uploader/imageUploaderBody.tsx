@@ -69,21 +69,20 @@ const ImageUploadBody = () => {
   };
 
   useEffect(() => {
-    if (isLoading) {
-      setShowLoadingToast(true);
-    } else {
-      setShowLoadingToast(false);
-    }
+    if (isLoading) setShowLoadingToast(true);
+    else setShowLoadingToast(false);
   }, [isLoading]);
 
   useEffect(() => {
     if (success) {
       setShowSuccessToast(true);
-      setExtFiles([]); 
-      dispatch(resetUploadState()); 
-      dispatch(fetchImages());
+      setExtFiles([]);
+      dispatch(resetUploadState());
+      dispatch(fetchImages({ page: 1, limit: 20, fileType: "all" }));
+
     }
   }, [success, dispatch]);
+
 
   useEffect(() => {
     if (showSuccessToast) {

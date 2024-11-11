@@ -21,7 +21,7 @@ const TabsContent: React.FC<TabsContentProp> = ({
   const { images, isLoading } = useAppSelector(({ image }: RootState) => image);
 
   useEffect(() => {
-    dispatch(fetchImages());
+    dispatch(fetchImages({ page: 1, limit: 20, fileType: "all" }));
   }, [basicTab, dispatch]);
 
   return (

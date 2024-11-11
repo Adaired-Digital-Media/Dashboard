@@ -37,9 +37,19 @@ export const fetchImages = createAsyncThunk<ImageType[], { page: number; limit: 
 );
 
 
-export const deleteImage = createAsyncThunk(
+// export const deleteImage = createAsyncThunk(
+//   "images/deleteImage",
+//   async (public_id: string) => {
+//     await api.delete(
+//       `${process.env.NEXT_PUBLIC_BASE_URL}/multer/deleteFile/${public_id}`
+//     );
+//     return public_id;
+//   }
+// );
+
+export const deleteImage = createAsyncThunk<string, string, { rejectValue: string }>(
   "images/deleteImage",
-  async (public_id: string) => {
+  async (public_id) => {
     await api.delete(
       `${process.env.NEXT_PUBLIC_BASE_URL}/multer/deleteFile/${public_id}`
     );
@@ -47,9 +57,22 @@ export const deleteImage = createAsyncThunk(
   }
 );
 
-export const uploadImages = createAsyncThunk(
+// export const uploadImages = createAsyncThunk(
+//   "images/uploadImages",
+//   async (files: File[]) => {
+//     const formData = new FormData();
+//     files.forEach((file) => formData.append("files", file));
+//     const { data } = await api.post(
+//       `${process.env.NEXT_PUBLIC_BASE_URL}/multer/upload`,
+//       formData
+//     );
+//     return data;
+//   }
+// );
+
+export const uploadImages = createAsyncThunk<{ data: ImageType[] }, File[], { rejectValue: string }>(
   "images/uploadImages",
-  async (files: File[]) => {
+  async (files) => {
     const formData = new FormData();
     files.forEach((file) => formData.append("files", file));
     const { data } = await api.post(
