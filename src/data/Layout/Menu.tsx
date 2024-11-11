@@ -46,35 +46,35 @@ export const MenuList = [
           },
         ],
       },
-      {
-        title: "Case Study",
-        icon: "sample-page",
-        id: 2,
-        type: "sub",
-        active: false,
-        children: [
-          {
-            path: "/pages/casestudy/add_casestudy",
-            title: "Add Case Study",
-            type: "link",
-          },
-          {
-            path: "/pages/casestudy/catestudy_list",
-            title: "Case Study List",
-            type: "link",
-          },
-          {
-            path: "/pages/casestudy/add_category",
-            title: "Add Category",
-            type: "link",
-          },
-          {
-            path: "/pages/casestudy/category_list",
-            title: "Category List",
-            type: "link",
-          },
-        ],
-      },
+      // {
+      //   title: "Case Study",
+      //   icon: "sample-page",
+      //   id: 2,
+      //   type: "sub",
+      //   active: false,
+      //   children: [
+      //     {
+      //       path: "/pages/casestudy/add_casestudy",
+      //       title: "Add Case Study",
+      //       type: "link",
+      //     },
+      //     {
+      //       path: "/pages/casestudy/catestudy_list",
+      //       title: "Case Study List",
+      //       type: "link",
+      //     },
+      //     {
+      //       path: "/pages/casestudy/add_category",
+      //       title: "Add Category",
+      //       type: "link",
+      //     },
+      //     {
+      //       path: "/pages/casestudy/category_list",
+      //       title: "Category List",
+      //       type: "link",
+      //     },
+      //   ],
+      // },
       {
         title: "Blog",
         icon: "sample-page",
@@ -84,16 +84,16 @@ export const MenuList = [
         children: [
           { path: "/pages/blog/add_post", title: "Add Blog", type: "link" },
           { path: "/pages/blog/blog_list", title: "Blog List", type: "link" },
-          {
-            path: "/pages/blog/add_blog_category",
-            title: "Add Category",
-            type: "link",
-          },
-          {
-            path: "/pages/blog/blog_category_list",
-            title: "Category List",
-            type: "link",
-          },
+          // {
+          //   path: "/pages/blog/add_blog_category",
+          //   title: "Add Category",
+          //   type: "link",
+          // },
+          // {
+          //   path: "/pages/blog/blog_category_list",
+          //   title: "Category List",
+          //   type: "link",
+          // },
         ],
       },
       {
