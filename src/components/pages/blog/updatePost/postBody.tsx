@@ -111,7 +111,6 @@ const PostBody = ({ slug }: { slug: string }) => {
     try {
       const result = await api.get(`blog/readBlog/${slug}`);
 
-      console.log(result);
       setBlogId(result?.data?._id);
 
       reset({
@@ -155,7 +154,7 @@ const PostBody = ({ slug }: { slug: string }) => {
     async (data: any) => {
       try {
         await api.put(`/blog/updateBlog/${blogId}`, data);
-        router.push(`/blog/blog_list`);
+        router.push(`/pages/blog/blog_list`);
         Swal.fire({
           title: "Blog updated successfully",
           text: "Blog page will be revalidated shortly.",
@@ -167,11 +166,13 @@ const PostBody = ({ slug }: { slug: string }) => {
           { headers: { "Content-Type": "application/json" }, timeout: 5000 }
         );
 
-        await axios.post(
+        const update = await axios.post(
           `${process.env.NEXT_PUBLIC_WEB_URI}/api/revalidatePage`,
           { slug: `/blog/${data.slug}` },
           { headers: { "Content-Type": "application/json" }, timeout: 5000 }
         );
+
+        console.log(update.status, update.data);
       } catch (error) {
         AxiosErrorHandler.handleError(error);
       }
