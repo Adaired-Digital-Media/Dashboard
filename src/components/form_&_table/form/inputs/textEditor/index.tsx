@@ -50,6 +50,7 @@ const Editor = forwardRef(
           },
           height: 580,
         },
+        
       }),
       []
     );

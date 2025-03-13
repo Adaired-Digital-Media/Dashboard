@@ -44,7 +44,7 @@ const PostListContainer = () => {
   const fetchPosts = useCallback(async () => {
     setIsLoading(true);
     try {
-      const response = await api.get(`/blog/readBlog`);
+      const response = await api.get(`/blog/readBlog?limit=500`);
       if (response.status !== 200) {
         throw new Error("Network response was not ok");
       }
